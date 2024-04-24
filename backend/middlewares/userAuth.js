@@ -5,7 +5,7 @@ function userAuth(req, res, next) {
         let authHeader = req.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             return res.status(403).json({
-                message: 'Invalid Bearer token'
+                details: 'Invalid Bearer token'
             });
         }
         
@@ -16,12 +16,12 @@ function userAuth(req, res, next) {
             req.email = decoded.email;
             next();
         } else {
-            return res.json({message: "Invalid User"});
+            return res.json({details: "Invalid User"});
         }
         
     } catch (err) {
         console.log(err);
-        res.json({message: "Invalid Token"});
+        res.json({details: "Invalid Token"});
     }
 }
 
