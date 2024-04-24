@@ -1,8 +1,31 @@
 import signIn from '../assets/signIn.png'
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import axios from 'axios';
+import { Api } from '../apiConfig';
 
 export function SignIn() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function handleSignIn() {
+        try {
+            let response = await axios.post(Api + '/signIn', {
+                email,
+                password
+            })
+            if (response.data.message == "success") {
+                window.alert("Login Successfull!!!");
+                localStorage.setItem("token", response.data.token);
+            } else {
+                window.alert(response.data.details);
+            }
+        } catch (error) {
+            console.log(error);
+            window.alert("Backend Error");
+        }
+    }
 
     return <div>
     <div className="flex flex-col sm:flex-row justify-center pt-5">
@@ -13,13 +36,13 @@ export function SignIn() {
 
             </div>
             <br />
-            <input type="text" className="shadow-md w-full pb-1" placeholder="Email" />
+            <input type="text" className="shadow-md w-full pb-1" placeholder="Email" onChange={(e)=> setEmail(e.target.value)}/>
             <br />
             <br />
-            <input type="text" className="shadow-md w-full pb-1 " placeholder="Password" />
+            <input type="password" className="shadow-md w-full pb-1 " placeholder="Password" onChange={(e)=> setPassword(e.target.value)}/>
             <br />
             <br />
-            <button className="w-full bg-myPurple text-white font-bold rounded-lg p-3"> Sign Up</button>
+            <button className="w-full bg-myPurple text-white font-bold rounded-lg p-3" onClick = {handleSignIn}> Sign In</button>
             <br />
             <br />
             <button className="w-full bg-white border border-myPurple text-myPurple font-bold rounded-lg p-3"

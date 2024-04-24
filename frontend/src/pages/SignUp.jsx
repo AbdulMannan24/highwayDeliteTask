@@ -21,6 +21,7 @@ export function SignUp() {
             })
             if (response.data.message == "success") {
                 window.alert("Registration Successfull! OTP Sent to your Email");
+                localStorage.setItem("token", response.data.token);
                 navigate('/otp');
             } else {
                 window.alert(response.data.details);

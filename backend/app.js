@@ -9,9 +9,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
+//signUp Route
 const signUpRoute = require('./routes/signUp');
 app.use('/signup', signUpRoute);
 
+//signIn Route
+const signInRoute = require('./routes/signIn');
+app.use('/signin', signInRoute);
 
 
 app.get('/', (req, res) => {
