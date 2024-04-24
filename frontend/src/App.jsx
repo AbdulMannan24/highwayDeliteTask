@@ -1,15 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
 import './App.css'
+import { SignUp } from './pages/SignUp'
+import { Otp } from './pages/Otp'
+import { SignIn } from './pages/SignIn'
+import { Api } from './apiConfig'
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <p className="font-bold text-center p-5 bg-blue-500">Setup</p>
-    </>
+      <Router>
+        <Routes>
+          <Route path = '/' element = { < SignUp />}/>
+          <Route path = '/otp' element = { < Otp />} />
+          <Route path = '/signIn' element = { <SignIn />}/>
+        </Routes>
+      </Router>
   )
 }
 
