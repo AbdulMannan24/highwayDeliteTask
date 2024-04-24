@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
         if (checkPassword) {
             let token = jwt.sign({
                 userId: userExists._id,
+                email: email
             }, process.env.SECRET_KEY);
             return res.json({
                 message: "success",

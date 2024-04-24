@@ -37,7 +37,8 @@ router.post('/', async (req, res) => {
         if (createdUser) {
             let userId = createdUser._id.toString();
             let token = jwt.sign({
-                userId: userId
+                userId: userId,
+                email: email
             }, process.env.SECRET_KEY);
 
             res.json({

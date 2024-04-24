@@ -17,6 +17,9 @@ app.use('/signup', signUpRoute);
 const signInRoute = require('./routes/signIn');
 app.use('/signin', signInRoute);
 
+//signIn Route
+const otpRoute = require('./routes/otp');
+app.use('/otp', otpRoute);
 
 app.get('/', (req, res) => {
     res.json({message: "Api Server Running..."});
