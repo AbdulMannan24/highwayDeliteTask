@@ -20,9 +20,16 @@ export function SignUp() {
                 password
             })
             if (response.data.message == "success") {
-                window.alert("Registration Successfull! OTP Sent to your Email");
-                localStorage.setItem("token", response.data.token);
-                navigate('/otp');
+                let token = 'Bearer ' + response.data.token;
+                let newResponse = await axios.post(Api + '/otp/generate', {}, {
+                    headers: { authorization: token}
+                })
+                if (newResponse.data.message == "success") {
+                    window.alert("Registration Successfull! OTP Sent to your Email");
+                    navigate('/otp');
+                 } else 
+                    window.alert(newResponse.data.details);
+                localStorage.setItem("token", response.data.token);                
             } else {
                 window.alert(response.data.details);
             }
