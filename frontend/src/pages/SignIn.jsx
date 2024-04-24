@@ -23,7 +23,7 @@ export function SignIn() {
             <br />
             <br />
             <button className="w-full bg-white border border-myPurple text-myPurple font-bold rounded-lg p-3"
-                onClick = {()=> {navigate('/')}}> Sign Up</button>
+                onClick = {()=> navigate('/')}> Sign Up</button>
         </div>
    
         

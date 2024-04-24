@@ -1,6 +1,6 @@
 export function Otp() {
 return <div className="flex justify-center m-20 p-10 ">
-        <div className="w-1/3 text-center border p-10 shadow">
+        <div className="sm:w-1/3 text-center border p-10 shadow">
             <h1 className="text-3xl font-bold text-myPurple">Enter OTP</h1>
             <br />
             <input type="text" placeholder="Enter 6 Digit OTP" className="border border-myPurple w-full" />
